@@ -25,17 +25,17 @@ For more on fuzzy logic just google it.
         new FuzzySet("lot", new RTriangleMFunction(10.0, 20.0))
     ));
 
-####Find young customers
+#### Find young customers
     customersCollection
         .find(fin("age", "young"))
         .sort(new Document("_fuzzy_age.young", 1))
         .sort(new Document("age", 1));
 
-####Find customers approximately 26 years old
+#### Find customers approximately 26 years old
     customersCollection
             .find(feq("age", 26.0));
             
-####Find young customers who spent a lot
+#### Find young customers who spent a lot
 
     Map<String, String> youngHighSpent = new HashMap<>();
     youngHighSpent.put("age", "young");
@@ -43,7 +43,7 @@ For more on fuzzy logic just google it.
 
     customersCollection
             .find(fand(youngHighSpent));
-####Find either old customers or those who've made a few orders
+#### Find either old customers or those who've made a few orders
 
     Map<String, String> oldOrFewOrders = new HashMap<>();
     oldOrFewOrders.put("age", "old");
